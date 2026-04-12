@@ -2,6 +2,9 @@
 
 Use this file as the single source of truth for the current active task.
 
+This starter kit is designed around a single active task by default.
+If the project later grows into multiple truly independent parallel work streams, this model may be expanded into a sharded task system.
+
 If no active task exists yet, keep the placeholders until real work begins.
 
 ## Goal
@@ -9,6 +12,8 @@ If no active task exists yet, keep the placeholders until real work begins.
 
 ## Owner
 [claude / codex / human]
+
+The owner is the current primary actor responsible for the active task.
 
 ## Status
 [not started / in progress / blocked / review / done]

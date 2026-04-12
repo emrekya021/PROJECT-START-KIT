@@ -17,10 +17,32 @@ The shared operational memory of this repository is:
 - `tasks/lessons.md`
 - `docs/adr/`
 
+## Default Operating Model
+This starter kit is optimized for:
+- one human operator
+- one or two AI tools
+- small to medium project scope
+- a single primary active work stream
+
+By default, this repository uses a single active task model through `tasks/todo.md`.
+
+If the project grows into multiple independent parallel work streams, this workflow may later evolve into a sharded task model such as:
+- `tasks/todo.md` as an index
+- `tasks/active/task-001-...md`
+- `tasks/active/task-002-...md`
+
+Until that becomes necessary, prefer one active task record.
+
 ## Roles
 
 ### Human
 The human provides direction, priorities, corrections, and final judgment when conflicts or ambiguities matter.
+
+The human is the final authority when:
+- ownership conflicts appear
+- task priority is unclear
+- a technical direction is disputed
+- validation is incomplete but work needs a decision
 
 ### Claude
 Claude follows:
@@ -93,6 +115,14 @@ Do not use ADRs for routine implementation notes.
 - If ownership is unclear, the task is not ready for execution.
 - Do not silently take over work already being actively handled by another actor.
 
+## Ownership Precedence
+When ownership or control is unclear, resolve authority in this order:
+1. explicit human instruction
+2. the `Owner` field in `tasks/todo.md`
+3. supporting context from `tasks/worklog.md`
+
+`tasks/worklog.md` provides context, but it does not override explicit ownership.
+
 ## Conflict Rules
 - If another actor is already working on the same task or same files, do not continue blindly.
 - Record the blocker or conflict in `tasks/todo.md`.
@@ -134,6 +164,16 @@ Update files based on what changed.
 - a tradeoff-heavy decision is accepted
 - future contributors may need to know why a path was chosen
 
+## ADR Threshold
+Create an ADR when at least two of the following are true:
+- the decision affects more than one subsystem or module
+- there was a real alternative worth considering
+- a future contributor may ask "why was this chosen?"
+- the decision will outlive the current task
+- changing the decision later would be meaningfully costly
+
+Prefer worklog notes for routine implementation details.
+
 ## Worklog Format
 Each worklog entry should include:
 - timestamp
@@ -143,6 +183,22 @@ Each worklog entry should include:
 - summary
 - verification
 
+## Worklog Granularity
+Do not create a worklog entry for every tiny edit.
+
+A worklog entry is expected when:
+- a meaningful unit of work is completed
+- a meaningful investigation happened
+- a blocker or conflict appears
+- a handoff is needed
+- validation was performed
+- a task state materially changed
+
+In practice:
+- small tasks may need one entry
+- medium tasks may need one to three entries
+- larger tasks may need milestone-based entries
+
 ## Handoff Expectations
 When handing work to another actor:
 - update `tasks/todo.md`
@@ -151,6 +207,26 @@ When handing work to another actor:
 - state blockers or open questions
 - state what was verified
 - state what remains to be done
+
+## Skills Rule
+`skills/` is for reusable workflows.
+
+A workflow should be considered a candidate for a skill when:
+- it has already repeated at least twice
+- or it is already clearly reusable, multi-step, and process-heavy on first appearance
+
+Do not create a new skill for every one-off task.
+Create or request a skill when reuse is likely.
+
+## Agent Source and Runtime Rule
+- `agents/` is the source and reference layer for agent definitions
+- `.claude/agents/` is the Claude runtime layer
+- `.codex/agents/` is the Codex runtime layer
+
+Runtime agent files may differ from source agents because Claude and Codex do not use identical formats or behaviors.
+
+If a source agent in `agents/` changes, relevant runtime agents should be reviewed and updated intentionally.
+Do not assume automatic synchronization.
 
 ## Validation
 Completion standards are defined in `docs/validation.md`.

@@ -8,6 +8,35 @@ The goal is to ensure that changes are not only implemented, but also verified a
 A task is not done just because code changed.
 A task is done when the relevant behavior has been verified or when verification gaps are explicitly stated.
 
+## Validation Layers
+
+### Core Validation Policy
+This starter kit defines the baseline validation rules that should apply in every project using this structure.
+
+These baseline rules include:
+- verify behavior, not only changed files
+- match validation depth to change risk
+- record meaningful verification in `tasks/worklog.md`
+- update related docs when repository truth changes
+- state validation gaps honestly when full verification is not possible
+
+### Project-Specific Validation Policy
+When this starter kit is instantiated into a real project, this file may be extended with stack-specific or workflow-specific validation expectations.
+
+Examples may include:
+- unit test commands
+- integration test commands
+- lint commands
+- typecheck commands
+- build commands
+- migration checks
+- preview deployment checks
+- e2e checks
+- manual QA flows
+
+Keep the core policy stable.
+Add project-specific execution details when the project becomes concrete.
+
 ## Validation Principles
 - Verify behavior, not only changed files.
 - The scope of validation should match the risk of the change.
