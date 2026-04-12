@@ -15,12 +15,13 @@ Do not assume placeholder content is final.
 When real project details are added, treat the repository documents as the source of truth.
 
 Read project context from:
-1. `PROJECT-START-KIT.md`
-2. `README.md`
+1. `PROJECT-BRIEF.md`
+2. `PROJECT-START-KIT.md`
 3. `docs/architecture.md`
 4. `docs/ai-workflow.md`
 5. `docs/validation.md`
-6. `tasks/todo.md`
+6. `README.md`
+7. `tasks/todo.md`
 
 ## How to Work in This Repo
 - Follow the global Codex rules first.
@@ -30,13 +31,14 @@ Read project context from:
 
 ## Required Reading Order
 Before non-trivial work:
-1. Read `PROJECT-START-KIT.md`
-2. Read `README.md`
+1. Read `PROJECT-BRIEF.md`
+2. Read `PROJECT-START-KIT.md`
 3. Read `docs/architecture.md`
 4. Read `docs/ai-workflow.md`
 5. Read `docs/validation.md`
-6. Read `tasks/todo.md`
-7. Read `tasks/lessons.md` when the task touches known failure patterns or prior mistakes
+6. Read `README.md`
+7. Read `tasks/todo.md`
+8. Read `tasks/lessons.md` when the task touches known failure patterns or prior mistakes
 
 ## Task Coordination
 - `tasks/todo.md` is the active task record.

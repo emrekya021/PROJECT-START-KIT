@@ -9,8 +9,9 @@ AI tools do not share internal memory with each other.
 Coordination happens through repository documents and task records.
 
 The shared operational memory of this repository is:
-- `README.md`
+- `PROJECT-BRIEF.md`
 - `docs/architecture.md`
+- `README.md`
 - `docs/validation.md`
 - `tasks/todo.md`
 - `tasks/worklog.md`
@@ -60,12 +61,14 @@ Codex should use repository documents instead of assumptions and should update s
 
 ## Reading Order
 Before non-trivial work, AI tools should read in this order:
-1. `PROJECT-START-KIT.md` if present
-2. `README.md`
+1. `PROJECT-BRIEF.md`
+2. `PROJECT-START-KIT.md` if present
 3. `docs/architecture.md`
-4. `docs/validation.md`
-5. `tasks/todo.md`
-6. `tasks/lessons.md` if relevant
+4. `docs/ai-workflow.md`
+5. `docs/validation.md`
+6. `README.md`
+7. `tasks/todo.md`
+8. `tasks/lessons.md` if relevant
 
 ## Shared Files and Their Purpose
 

@@ -1,15 +1,16 @@
 # Architecture
 
-This file describes the real project architecture once the starter kit is instantiated.
+This file describes the technical architecture of the project.
+
+For project intent, motivation, target users, and roadmap, see `PROJECT-BRIEF.md`.
+This file focuses on how the system is built, not why.
 
 If the project is not fully defined yet, keep placeholders in place and replace them when requirements become concrete.
 
-## Project Summary
+## Technical Summary
 - Project name: [PROJECT_NAME]
 - Project type: [PROJECT_TYPE]
-- Target users: [TARGET_USERS]
-- Core problem: [CORE_PROBLEM]
-- Core value proposition: [CORE_VALUE]
+- Tech stack: [TECH_STACK]
 
 ## System Overview
 [HIGH_LEVEL_ARCHITECTURE_SUMMARY]
@@ -107,7 +108,8 @@ Examples:
 - [QUESTION_2]
 
 ## Related Documents
-- `README.md`
+- `PROJECT-BRIEF.md` — project intent, motivation, roadmap
+- `README.md` — setup instructions, folder overview
 - `docs/ai-workflow.md`
 - `docs/validation.md`
 - `docs/adr/`

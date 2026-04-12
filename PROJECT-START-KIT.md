@@ -35,11 +35,12 @@ Core project documents have been filled with real content and active work is und
 ## Instantiation Trigger
 This repository should be considered instantiated into a real project when all of the following are true:
 
-1. `README.md` contains a real project summary
-2. `docs/architecture.md` contains real project structure, users, and core flows
-3. `docs/validation.md` contains any required project-specific validation expectations
-4. `tasks/todo.md` contains the first real active task
-5. placeholder text is no longer acting as the primary source of truth
+1. `PROJECT-BRIEF.md` contains real project intent (problem, users, value proposition, roadmap)
+2. `docs/architecture.md` contains real project technical structure and core flows
+3. `README.md` contains project name, tech stack, and setup instructions
+4. `docs/validation.md` contains any required project-specific validation expectations
+5. `tasks/todo.md` contains the first real active task
+6. placeholder text is no longer acting as the primary source of truth
 
 Until then, treat the repository as a starter kit with scaffolding content.
 
@@ -57,14 +58,19 @@ Before this starter kit is treated as a real project, define at least the follow
 - key constraints
 - known risks
 - non-goals
+- high-level roadmap (phases, not detailed tasks)
 
-These details should be reflected primarily in:
-- `README.md`
-- `docs/architecture.md`
+These details should be captured in:
+- `PROJECT-BRIEF.md` — the primary source of project intent and decisions
+
+Then derived into:
+- `docs/architecture.md` — technical structure, components, data model, core flows
+- `README.md` — project name, tech stack, setup instructions, folder overview
 
 ## What Should Be Customized
 When a real project idea is defined, update the following files with project-specific content:
 
+- `PROJECT-BRIEF.md` (create and fill — this is the primary project intent document)
 - `README.md`
 - `docs/architecture.md`
 - `docs/validation.md` when project-specific validation rules are needed
@@ -88,8 +94,9 @@ These are inside the repo and define repository-specific behavior:
 
 ### Project Meaning
 These explain what the project is:
-- `README.md`
-- `docs/architecture.md`
+- `PROJECT-BRIEF.md` — project intent, motivation, roadmap, non-goals (primary source)
+- `docs/architecture.md` — technical structure, components, flows
+- `README.md` — technical identity card (stack, setup, folder overview)
 
 ### AI Coordination
 These define how AI work is coordinated:
@@ -106,14 +113,24 @@ These define when work is considered complete:
 These explain important technical decisions:
 - `docs/adr/`
 
-## Typical Workflow
-1. Start from this repository structure
-2. Replace placeholders with real project details
-3. Define the current active task in `tasks/todo.md`
-4. Record meaningful work in `tasks/worklog.md`
-5. Record reusable lessons in `tasks/lessons.md`
-6. Record durable decisions in `docs/adr/`
-7. Keep documentation aligned with actual repository truth
+## How to Instantiate
+
+The recommended way to instantiate this starter kit is to use the `project-kickoff` skill in `skills/project-kickoff/SKILL.md`.
+
+This skill runs a two-phase process:
+1. **Interview** — collects project information through conversation, asks targeted questions, offers recommendations
+2. **Write** — fills `PROJECT-BRIEF.md`, derives `architecture.md`, `README.md`, updates AI context files, and opens the first task
+
+To use it, tell your AI tool something like: "I have a project idea, let's kick off" or "yeni proje fikrim var" and the skill will guide the process.
+
+Alternatively, you can instantiate manually by filling the files listed in "What Should Be Customized" above.
+
+## Typical Workflow (After Instantiation)
+1. Work on the active task in `tasks/todo.md`
+2. Record meaningful work in `tasks/worklog.md`
+3. Record reusable lessons in `tasks/lessons.md`
+4. Record durable decisions in `docs/adr/`
+5. Keep documentation aligned with actual repository truth
 
 ## Placeholder Rule
 Placeholder content is scaffolding, not truth.
