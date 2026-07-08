@@ -12,7 +12,7 @@ folder discipline).
 claude
 
 ## Status
-done — pending human-approved commit and V2 push (see backlog)
+done — committed (0717b82) and pushed to origin/main
 
 ## Priority
 high
