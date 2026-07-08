@@ -1,4 +1,4 @@
-# Global AGENTS Working Rules
+# Global Codex Working Rules
 
 ## 1. Plan Mode Default
 - Start with a plan for any non-trivial task.

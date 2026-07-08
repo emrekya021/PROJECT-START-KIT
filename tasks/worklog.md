@@ -17,6 +17,16 @@ Add new entries to the top or bottom consistently.
 
 ---
 
+### [2026-07-08 18:30]
+- Actor: claude
+- Task: post-V2 template hygiene audit
+- Files: `skills/project-kickoff/SKILL.md`, `.env.example`, `global-templates/AGENTS.md`
+- Summary: Full-repo audit (independent auditor agent + manual checks) for template-shipping bugs after V2. Found and fixed: (1) kickoff skill's worklog-entry template didn't match the canonical Worklog Format (## vs ### heading, "Files changed" vs "Files", missing Blockers/Next) — first entry in a fresh clone would have seeded format drift; (2) stale `MCP_ENDPOINT` example removed from .env.example (MCP config lives in tool config layers, not app env); (3) refreshed stale `global-templates/AGENTS.md` copy (title had changed in the real ~/.codex/AGENTS.md). Audit found no other issues: no stale V1 process references, CLAUDE/AGENTS mirror intact, kickoff File 1-9 numbering consistent, no secrets, gitignore correct.
+- Verification: auditor re-checks + `diff -q global-templates/AGENTS.md ~/.codex/AGENTS.md` identical; grep for old process terms clean outside archives. Worklog-guard Stop hook also fired live this session and behaved as designed.
+- Blockers / Next: none.
+
+---
+
 ### [2026-07-08 17:45]
 - Actor: claude
 - Task: Project Start Kit V2 restructure (plan: `plans/001-project-start-kit-v2.md`)

@@ -263,14 +263,15 @@ Seed the backlog from the roadmap: convert Phase 1's remaining deliverables (bey
 
 ### File 9: `tasks/worklog.md`
 
-Append a kickoff entry:
+Append a kickoff entry using the worklog's own Entry Template format (`tasks/worklog.md`):
 ```
-## [DATE] — Project Kickoff
-- **Actor:** [claude / codex — whoever ran this skill]
-- **Task:** Project instantiation
-- **Files changed:** PROJECT-BRIEF.md, docs/architecture.md, README.md, CLAUDE.md, AGENTS.md, tasks/todo.md, tasks/backlog.md
-- **Summary:** Instantiated the Project Start Kit with [project name]. Completed interview, created project brief, derived architecture and README, opened first task.
-- **Verification:** All placeholder content in core files replaced with real project content. Instantiation trigger conditions met.
+### [YYYY-MM-DD HH:MM]
+- Actor: [claude / codex — whoever ran this skill]
+- Task: project kickoff / instantiation
+- Files: PROJECT-BRIEF.md, docs/architecture.md, README.md, CLAUDE.md, AGENTS.md, tasks/todo.md, tasks/backlog.md
+- Summary: Instantiated the Project Start Kit with [project name]. Completed interview, created project brief, derived architecture (incl. Folder Map) and README, seeded backlog, opened first task.
+- Verification: All placeholder content in core files replaced with real project content. Instantiation trigger conditions met.
+- Blockers / Next: [none / first task from tasks/todo.md]
 ```
 
 ## After Completion
