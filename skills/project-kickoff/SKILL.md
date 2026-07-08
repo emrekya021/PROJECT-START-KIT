@@ -144,6 +144,11 @@ Do not proceed to Phase 2 until the user explicitly confirms.
 
 Once the user confirms, update files in this exact order. Each file has a specific role — do not mix responsibilities between files.
 
+**Never touch the user's home directory as part of this skill.** This includes
+`~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md`, and anything else outside this repository.
+`global-templates/` in this repo holds informational copies only — do not sync, install,
+or overwrite global config unless the human explicitly asks for that in a separate request.
+
 ### File 1: `PROJECT-BRIEF.md`
 
 This is the primary output. Fill the template at `PROJECT-BRIEF.md` in the repository root with all collected information.

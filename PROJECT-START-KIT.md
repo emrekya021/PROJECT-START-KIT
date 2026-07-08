@@ -87,6 +87,11 @@ These are outside the repo and define general working behavior:
 - `~/.claude/CLAUDE.md`
 - `~/.codex/AGENTS.md`
 
+Reference copies are kept in `global-templates/` for visibility — they are informational
+only. This kit never writes to the user's home directory automatically; a file from
+`global-templates/` is installed there only when the human explicitly asks. See
+`global-templates/README.md` for the full rule.
+
 ### Project AI Rules
 These are inside the repo and define repository-specific behavior:
 - `CLAUDE.md`

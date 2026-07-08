@@ -1,4 +1,4 @@
-# Project Codex Rules
+# Project AGENTS Rules
 
 ## Project Context
 This repository is a reusable Project Start Kit for AI-assisted software projects.

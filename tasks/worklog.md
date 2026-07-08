@@ -17,6 +17,16 @@ Add new entries to the top or bottom consistently.
 
 ---
 
+### [2026-07-08 14:00]
+- Actor: claude
+- Task: add global-templates/ reference copies of global Claude/Codex rules
+- Files: `global-templates/CLAUDE.md` (new), `global-templates/AGENTS.md` (new), `global-templates/README.md` (new), `PROJECT-START-KIT.md`, `README.md`, `skills/project-kickoff/SKILL.md`, `tasks/todo.md`
+- Summary: Created `global-templates/` holding byte-identical reference copies of `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md`, plus a README explaining they are informational only and must never be auto-installed into the user's home directory. Updated `PROJECT-START-KIT.md` Global AI Rules section and root `README.md` structure list to reference the folder. Added an explicit non-auto-install guard to `skills/project-kickoff/SKILL.md` so future kickoff runs never write to `~/.claude/` or `~/.codex/` on their own.
+- Verification: `diff` confirmed both copies are byte-identical to the real global files; confirmed the real global files' mtimes are unchanged (not touched); `git status` shows only the intended files as modified/added.
+- Blockers / Next: None. Follow-up (optional, on request only): re-sync the copies if the operator's real global files change later.
+
+---
+
 ## Example Entry
 
 ### [2026-04-10 18:30]

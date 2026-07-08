@@ -29,6 +29,7 @@ This file focuses on what the project is technically and how to work with the re
 - `skills/` — reusable workflows
 - `agents/` — source/reference agent definitions
 - `mcp/README.md` — MCP inventory and usage notes
+- `global-templates/` — reference copies of the operator's global Claude/Codex rules (informational only, never auto-installed — see `global-templates/README.md`)
 
 ## Quick Start
 
