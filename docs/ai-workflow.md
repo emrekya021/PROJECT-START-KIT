@@ -221,15 +221,13 @@ A workflow should be considered a candidate for a skill when:
 Do not create a new skill for every one-off task.
 Create or request a skill when reuse is likely.
 
-## Agent Source and Runtime Rule
-- `agents/` is the source and reference layer for agent definitions
-- `.claude/agents/` is the Claude runtime layer
-- `.codex/agents/` is the Codex runtime layer
+## Agent Runtime Rule
+- `.claude/agents/` is the Claude runtime layer for project agents
+- `.codex/agents/` is the Codex runtime layer for project agents
 
-Runtime agent files may differ from source agents because Claude and Codex do not use identical formats or behaviors.
-
-If a source agent in `agents/` changes, relevant runtime agents should be reviewed and updated intentionally.
-Do not assume automatic synchronization.
+Claude and Codex do not use identical agent formats or behaviors.
+If an agent should exist for both tools, adapt it per tool intentionally.
+Do not assume automatic synchronization between the two runtime layers.
 
 ## Validation
 Completion standards are defined in `docs/validation.md`.

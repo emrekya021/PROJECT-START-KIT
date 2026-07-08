@@ -7,7 +7,7 @@ It provides a consistent structure for:
 - AI coordination
 - validation standards
 - task tracking
-- reusable agents, skills, and MCP notes
+- reusable skills
 
 ## Purpose
 Use this repository as the base structure for starting a new project.
@@ -27,8 +27,6 @@ This file focuses on what the project is technically and how to work with the re
 - `tasks/worklog.md` — chronological work log
 - `tasks/lessons.md` — reusable lessons and repeated failure patterns
 - `skills/` — reusable workflows
-- `agents/` — source/reference agent definitions
-- `mcp/README.md` — MCP inventory and usage notes
 - `global-templates/` — reference copies of the operator's global Claude/Codex rules (informational only, never auto-installed — see `global-templates/README.md`)
 
 ## Quick Start

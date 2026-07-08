@@ -25,7 +25,7 @@ A skill should usually describe:
 ## Usage Rule
 Use skills for repeatable process, not identity or role.
 If the question is "how do we do this?", it belongs in `skills/`.
-If the question is "who or what kind of specialist is this?", it belongs in `agents/`.
+If the question is "who or what kind of specialist is this?", it belongs in a runtime agent definition (`.claude/agents/` or `.codex/agents/`).
 
 ## Included Skills
 

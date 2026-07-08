@@ -7,7 +7,7 @@ Its purpose is to provide a consistent structure for:
 - AI coordination
 - validation standards
 - task tracking
-- reusable agents, skills, and MCP notes
+- reusable skills
 
 ## What This Repository Is
 This repository is not tied to a single product by default.
@@ -77,8 +77,7 @@ When a real project idea is defined, update the following files with project-spe
 - `tasks/todo.md` when active work begins
 - `docs/adr/` when durable technical decisions are made
 - `skills/` when reusable workflows emerge
-- `agents/` when reusable agent definitions are added
-- `mcp/README.md` when external MCP tooling becomes relevant
+- `.claude/agents/` or `.codex/agents/` when project-specific runtime agents are added
 
 ## Repository Layers
 

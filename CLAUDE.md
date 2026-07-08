@@ -8,7 +8,7 @@ It provides a consistent structure for:
 - AI coordination
 - validation standards
 - task tracking
-- reusable agents, skills, and MCP notes
+- reusable skills
 
 Project-specific content may still be incomplete or written as placeholders.
 Do not assume placeholder content is final.
@@ -81,7 +81,6 @@ Before non-trivial work:
 
 ## Agents and Skills
 - `skills/` contains reusable project workflows.
-- `agents/` contains source/reference agent definitions.
 - `.claude/agents/` contains Claude-usable project agents.
 - Use subagents when they clearly improve focus, separation, or analysis quality.
 - Keep one responsibility per subagent.

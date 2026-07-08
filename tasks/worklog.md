@@ -17,6 +17,16 @@ Add new entries to the top or bottom consistently.
 
 ---
 
+### [2026-07-08 16:30]
+- Actor: claude
+- Task: remove unused `agents/` and `mcp/` directories
+- Files: `agents/README.md` (deleted), `mcp/README.md` (deleted), `CLAUDE.md`, `AGENTS.md`, `README.md`, `PROJECT-START-KIT.md`, `docs/ai-workflow.md`, `skills/README.md`, `tasks/todo.md`
+- Summary: Removed the `agents/` and `mcp/` folders because they held only READMEs and were never written to by the AI tools — runtime agents live in `.claude/agents/` / `.codex/agents/` and live MCP configuration lives in tool-specific config layers. Both folders were manually-maintained parallel documentation with drift risk. Cleaned all references: structure lists, "Agents and Skills" sections, PROJECT-START-KIT customization list, ai-workflow "Agent Source and Runtime Rule" (renamed to "Agent Runtime Rule", now referencing only runtime dirs), and skills/README's agents pointer.
+- Verification: `grep` across all repo markdown confirms no stale `agents/` or `mcp/` references remain (only intentional `.claude/agents/` / `.codex/agents/` runtime references); `git status` shows only the intended deletions and doc edits.
+- Blockers / Next: None. If MCP usage notes are needed later, document them under `docs/`.
+
+---
+
 ### [2026-07-08 14:00]
 - Actor: claude
 - Task: add global-templates/ reference copies of global Claude/Codex rules
