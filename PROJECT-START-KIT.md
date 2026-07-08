@@ -75,6 +75,8 @@ When a real project idea is defined, update the following files with project-spe
 - `docs/architecture.md`
 - `docs/validation.md` when project-specific validation rules are needed
 - `tasks/todo.md` when active work begins
+- `tasks/backlog.md` as future tasks emerge (seeded from the roadmap at kickoff)
+- `plans/` as approved implementation plans accumulate (automatic via `plansDirectory`)
 - `docs/adr/` when durable technical decisions are made
 - `skills/` when reusable workflows emerge
 - `.claude/agents/` or `.codex/agents/` when project-specific runtime agents are added
@@ -104,10 +106,12 @@ These explain what the project is:
 
 ### AI Coordination
 These define how AI work is coordinated:
-- `docs/ai-workflow.md`
-- `tasks/todo.md`
-- `tasks/worklog.md`
-- `tasks/lessons.md`
+- `docs/ai-workflow.md` — the canonical process document
+- `tasks/todo.md` — the single active task
+- `tasks/backlog.md` — what comes next
+- `plans/` — durable implementation plans (plan-mode output lands here automatically)
+- `tasks/worklog.md` — what happened
+- `tasks/lessons.md` — what was learned
 
 ### Quality and Completion
 These define when work is considered complete:
@@ -130,11 +134,12 @@ To use it, tell your AI tool something like: "I have a project idea, let's kick 
 Alternatively, you can instantiate manually by filling the files listed in "What Should Be Customized" above.
 
 ## Typical Workflow (After Instantiation)
-1. Work on the active task in `tasks/todo.md`
-2. Record meaningful work in `tasks/worklog.md`
-3. Record reusable lessons in `tasks/lessons.md`
-4. Record durable decisions in `docs/adr/`
-5. Keep documentation aligned with actual repository truth
+1. Work on the active task in `tasks/todo.md` (Level 2-3 work gets a plan in `plans/`)
+2. Park new ideas in `tasks/backlog.md` as one-liners
+3. Record meaningful work in `tasks/worklog.md` (a Stop hook guards this)
+4. Record reusable lessons in `tasks/lessons.md`
+5. Record durable decisions in `docs/adr/`
+6. Keep documentation aligned with actual repository truth (Close-out Checklist in `docs/ai-workflow.md`)
 
 ## Placeholder Rule
 Placeholder content is scaffolding, not truth.

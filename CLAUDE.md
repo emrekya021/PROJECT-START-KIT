@@ -14,89 +14,29 @@ Project-specific content may still be incomplete or written as placeholders.
 Do not assume placeholder content is final.
 When real project details are added, treat the repository documents as the source of truth.
 
-Read project context from:
-1. `PROJECT-BRIEF.md`
-2. `PROJECT-START-KIT.md`
-3. `docs/architecture.md`
-4. `docs/ai-workflow.md`
-5. `docs/validation.md`
-6. `README.md`
-7. `tasks/todo.md`
+<!-- After kickoff, replace the block above with the real project summary:
+[Project name] is [one-line summary].
+Target users: [who] / Core problem: [what] / Tech stack: [what]
+For the full brief see PROJECT-BRIEF.md; for architecture see docs/architecture.md. -->
 
-## How to Work in This Repo
-- Follow the global Claude rules first.
-- Then follow this project-specific workflow.
-- Do not invent process when the repository already defines one.
-- Treat repository docs as the source of truth for project workflow and completion criteria.
+## Session Memory
+@tasks/todo.md
 
-## Required Reading Order
-Before non-trivial work:
-1. Read `PROJECT-BRIEF.md`
-2. Read `PROJECT-START-KIT.md`
-3. Read `docs/architecture.md`
-4. Read `docs/ai-workflow.md`
-5. Read `docs/validation.md`
-6. Read `README.md`
-7. Read `tasks/todo.md`
-8. Read `tasks/lessons.md` if the task is related to prior mistakes or recurring patterns
-
-## Task Coordination
-- `tasks/todo.md` is the active task record.
-- Before starting non-trivial work, update `tasks/todo.md` with:
-  - goal
-  - owner
-  - status
-  - plan
-  - next step
-- If another actor is already actively working on the same task or same files, do not continue blindly.
-- If conflict or ownership ambiguity exists, write the blocker in `tasks/todo.md`, note it in `tasks/worklog.md`, and stop.
-
-## Worklog Discipline
-- Record meaningful work in `tasks/worklog.md`.
-- Every worklog entry should include:
-  - timestamp
-  - actor (`claude`, `codex`, or `human`)
-  - task
-  - files changed or inspected
-  - summary
-  - verification
-- Use append-only logging. Do not rewrite prior history unless fixing an obvious error.
-
-## Lessons
-- Update `tasks/lessons.md` when:
-  - the user corrects a reusable mistake
-  - the same failure pattern appears again
-  - a project-specific gotcha should not be repeated
-- Keep lessons short, specific, and actionable.
-
-## Architecture and Decisions
-- If the system design, boundaries, major flow, or mental model changes, update `docs/architecture.md`.
-- If a durable technical decision is made and future readers may ask "why was this chosen?", create or update an ADR in `docs/adr/`.
-- Use ADRs for meaningful design decisions, not routine implementation notes.
-
-## Validation
-- Follow `docs/validation.md` before marking work complete.
-- Do not mark work done unless the required validation is performed or clearly noted as incomplete.
-- If validation cannot be completed, say exactly what was checked and what remains unverified.
-
-## Agents and Skills
-- `skills/` contains reusable project workflows.
-- `.claude/agents/` contains Claude-usable project agents.
-- Use subagents when they clearly improve focus, separation, or analysis quality.
-- Keep one responsibility per subagent.
+## Hard Rules
+1. Follow the global Claude rules first, then this file, then `docs/ai-workflow.md` for all process detail. Do not invent process the repo already defines.
+2. Read documents by need, not upfront: design-affecting work → `PROJECT-BRIEF.md` + `docs/architecture.md`; finishing → `docs/validation.md`; risky/recurring areas → `tasks/lessons.md`.
+3. One active task at a time in `tasks/todo.md`. New ideas go to `tasks/backlog.md` as one line, immediately.
+4. Level 2-3 work (per `docs/validation.md`) requires a plan file in `plans/`, referenced from `tasks/todo.md` as `Active plan:`. Level 1 work does not.
+5. Folder discipline: before creating any file, follow the folder map in `docs/architecture.md`. Never drop files in the repo root; if a new top-level folder is genuinely needed, update `docs/architecture.md` first.
+6. Before marking work done, run the Close-out Checklist in `docs/ai-workflow.md` (worklog, architecture, ADR, lessons, folder check).
+7. Never claim completion without verification per `docs/validation.md`; state gaps honestly.
+8. Record meaningful work in `tasks/worklog.md` (append-only). A Stop hook will remind you if you forget.
+9. If another actor is actively working on the same task or files: stop, note it in `tasks/todo.md`, ask the human.
+10. Keep this file and `AGENTS.md` mirrored: any rule change here must be applied to both in the same edit.
 
 ## Communication
 - For non-trivial work, state the approach before broad changes.
-- Keep progress updates short and useful.
-- At the end, summarize:
-  - what changed
-  - why it changed
-  - what was verified
-  - any blockers or follow-up work
+- At the end, summarize: what changed, why, what was verified, blockers.
 
-## Done Criteria
-A task is not done until all of the following are true:
-- the active task record is updated
-- meaningful work is logged in `tasks/worklog.md`
-- validation was performed according to `docs/validation.md` or gaps are clearly stated
-- relevant docs were updated if the change affected architecture, workflow, or durable decisions
+## Process Reference
+All process detail — tiered reading, plans flow, backlog rule, close-out checklist, worklog format, ADR threshold, subagent notes, growth path — lives in `docs/ai-workflow.md`.

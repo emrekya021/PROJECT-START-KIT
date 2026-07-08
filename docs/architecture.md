@@ -74,11 +74,27 @@ For each important entity, define:
 - lifecycle
 - relationships
 
+## Folder Map
+The concrete directory layout for this project. AI tools follow this map when creating
+files (folder discipline rule in `CLAUDE.md` / `AGENTS.md`): no files in the repo root,
+and new top-level folders require updating this map first.
+
+Filled at kickoff for the chosen stack. Example shape:
+- `src/` — application source code ([SUBFOLDER_NOTES])
+- `tests/` — automated tests, mirroring `src/` structure
+- `public/` or `assets/` — static assets (if applicable)
+- `docs/`, `tasks/`, `plans/`, `skills/` — kit documentation and coordination (fixed)
+
+Project folder map:
+- [FOLDER_1] — [PURPOSE]
+- [FOLDER_2] — [PURPOSE]
+
 ## Boundaries and Responsibilities
 - `src/` contains the application source code
 - `tests/` contains automated tests
 - `docs/` contains project meaning, workflow rules, validation standards, and architecture notes
 - `tasks/` contains active work state, work history, and reusable lessons
+- `plans/` contains durable implementation plans
 
 Add project-specific boundaries here:
 - [BOUNDARY_RULE_1]

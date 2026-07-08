@@ -1,64 +1,53 @@
 # Active Task
 
-Use this file as the single source of truth for the current active task.
-
-This starter kit is designed around a single active task by default.
-If the project later grows into multiple truly independent parallel work streams, this model may be expanded into a sharded task system.
-
-If no active task exists yet, keep the placeholders until real work begins.
+The single source of truth for the current active task. One active task at a time.
+Future work lives in `tasks/backlog.md`. If no active task exists, keep the placeholders.
 
 ## Goal
-Remove the unused `agents/` and `mcp/` directories from the starter kit and clean up
-all references to them across the documentation.
+Restructure the kit as "Project Start Kit V2": single-AI memory/planning optimization
+(tiered reading, canonical process doc, in-repo plans, backlog, worklog guard hook,
+folder discipline).
 
 ## Owner
 claude
 
 ## Status
-done
+done — pending human-approved commit and V2 push (see backlog)
 
 ## Priority
-low
+high
+
+## Active plan
+`plans/001-project-start-kit-v2.md`
 
 ## Context
-The operator observed that AI tools never actually write to `agents/` or `mcp/` —
-real runtime agents live in `.claude/agents/` / `.codex/agents/` and real MCP
-configuration lives in tool-specific config layers (`.mcp.json`, Claude/Codex config).
-Both folders contained only a README and acted as manually-maintained parallel
-documentation with silent-drift risk, so they were removed to simplify the kit.
+Designed and approved with the operator across this session. The kit was optimized for
+multi-AI coordination; V2 optimizes it for one AI working well across sessions.
+Rationale and decisions are recorded in the plan file.
 
 ## Plan
-- [x] Inspect `agents/README.md` and `mcp/README.md`, confirm no real content exists
-- [x] Find all references across the repo
-- [x] Delete `agents/` and `mcp/` (git rm)
-- [x] Clean references in `CLAUDE.md`, `AGENTS.md`, `README.md`, `PROJECT-START-KIT.md`, `docs/ai-workflow.md`, `skills/README.md`
-- [x] Verify no stale references remain (grep)
-- [x] Log the work in `tasks/worklog.md`
-
-## Current Focus
-Complete.
+- [x] Task 1: `.claude/settings.json` (plansDirectory) + `plans/README.md`
+- [x] Task 2: rewrite `docs/ai-workflow.md` as canonical process doc (~90 lines)
+- [x] Task 3: thin mirrored `CLAUDE.md` + `AGENTS.md` (42 lines each)
+- [x] Task 4: worklog guard Stop hook (tested: warn / loop-protect / worklog-touched / clean)
+- [x] Task 5: refresh this file (Active plan field, backlog link)
+- [x] Task 6: `docs/adr/000-template.md`
+- [x] Task 7: reference updates + kickoff skill (folder-map step) + architecture Folder Map section
+- [x] Task 8: close-out — worklog written, verification done; commit + V2 push await human approval
 
 ## Next Step
-None. If MCP usage notes are ever needed, document them under `docs/` instead.
+Human decision: approve commit, then backlog item 1 (push as "Project Start Kit V2" to GitHub).
 
 ## Files Involved
-- `agents/README.md` (deleted)
-- `mcp/README.md` (deleted)
-- `CLAUDE.md`
-- `AGENTS.md`
-- `README.md`
-- `PROJECT-START-KIT.md`
-- `docs/ai-workflow.md`
-- `skills/README.md`
+See `plans/001-project-start-kit-v2.md` task list.
 
 ## Blockers
 - None
 
 ## Validation Plan
-- `grep` across all repo markdown to confirm no remaining `agents/` or `mcp/` references
-  (only intentional `.claude/agents/` / `.codex/agents/` runtime references remain)
-- `git status` shows only the intended deletions and edits
+Full set in the plan file: grep for stale references, `wc -l` limits, JSON validity,
+hook live tests, CLAUDE/AGENTS diff.
 
 ## Notes
-- Level 1 (small, low-risk) change per `docs/validation.md` — documentation/structure only.
-- Repo remains in Starter Kit Mode.
+- Level 2 change per `docs/validation.md` (docs + config, no product runtime).
+- When this task closes and Next Step is empty, propose the top item from `tasks/backlog.md`.

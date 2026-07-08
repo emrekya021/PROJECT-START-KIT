@@ -1,238 +1,90 @@
 # AI Workflow
 
-This file defines how AI-assisted work is coordinated in this repository.
-
-The goal is to keep Claude, Codex, and the human operator aligned through shared repository state instead of hidden context.
+This is the canonical process document for AI-assisted work in this repository.
+`CLAUDE.md` and `AGENTS.md` stay thin and point here; process rules live in this file only.
 
 ## Core Principle
-AI tools do not share internal memory with each other.
-Coordination happens through repository documents and task records.
+The AI forgets everything between sessions. The repository is its memory.
+Coordination and continuity happen through repository documents, not hidden context.
 
-The shared operational memory of this repository is:
-- `PROJECT-BRIEF.md`
-- `docs/architecture.md`
-- `README.md`
-- `docs/validation.md`
-- `tasks/todo.md`
-- `tasks/worklog.md`
-- `tasks/lessons.md`
-- `docs/adr/`
+The shared memory files are:
+- `PROJECT-BRIEF.md` — why the project exists
+- `docs/architecture.md` — how the system is built (including the folder map)
+- `docs/validation.md` — what "done" means
+- `plans/` — durable implementation plans
+- `tasks/todo.md` — the single active task
+- `tasks/backlog.md` — what comes next
+- `tasks/worklog.md` — what happened
+- `tasks/lessons.md` — what we learned
+- `docs/adr/` — why decisions were made
 
-## Default Operating Model
-This starter kit is optimized for:
-- one human operator
-- one or two AI tools
-- small to medium project scope
-- a single primary active work stream
+## Tiered Reading
+Do not front-load documents. Read them when the task needs them.
 
-By default, this repository uses a single active task model through `tasks/todo.md`.
+- **Always loaded:** `CLAUDE.md` / `AGENTS.md` (automatic) and `tasks/todo.md` (imported/read at session start).
+- **Read on demand:**
+  - Design-affecting work → `PROJECT-BRIEF.md` + `docs/architecture.md`
+  - Finishing a task → `docs/validation.md`
+  - Risky or previously-failed areas → `tasks/lessons.md`
+  - Understanding a past decision → `docs/adr/`
+- `PROJECT-START-KIT.md` and `README.md` are not per-task reading (instantiation-time and human-facing).
 
-If the project grows into multiple independent parallel work streams, this workflow may later evolve into a sharded task model such as:
-- `tasks/todo.md` as an index
-- `tasks/active/task-001-...md`
-- `tasks/active/task-002-...md`
+## Plans Flow
+- Level 2-3 work (per `docs/validation.md`) gets a plan file in `plans/`; Level 1 work does not.
+- Plan-mode plans land in `plans/` automatically (`plansDirectory` in `.claude/settings.json`).
+- `tasks/todo.md` points to the current plan via `Active plan:`.
+- Finished plans stay in `plans/` as archive.
 
-Until that becomes necessary, prefer one active task record.
+## Backlog Rule
+- Any "let's do this later" idea goes to `tasks/backlog.md` as one line, immediately.
+- `tasks/todo.md` holds exactly one active task.
+- At task close, propose the next item from the backlog.
 
-## Roles
+## Close-out Checklist
+Before marking any task done, answer these five questions:
+1. Is the work logged in `tasks/worklog.md`? (a Stop hook guards this)
+2. Did system boundaries or flows change? → update `docs/architecture.md`
+3. Was a durable technical decision made? → add an ADR (`docs/adr/000-template.md`)
+4. Did the user correct a reusable mistake, or did a gotcha surface? → add to `tasks/lessons.md`
+5. Are all new files in the right folders per the architecture folder map?
 
-### Human
-The human provides direction, priorities, corrections, and final judgment when conflicts or ambiguities matter.
+## Worklog Format
+Each entry includes: timestamp, actor (`claude` / `codex` / `human`), task, files changed or inspected, summary, verification, blockers/next.
 
-The human is the final authority when:
-- ownership conflicts appear
-- task priority is unclear
-- a technical direction is disputed
-- validation is incomplete but work needs a decision
-
-### Claude
-Claude follows:
-- global `~/.claude/CLAUDE.md`
-- project `CLAUDE.md`
-
-Claude should use repository documents instead of guessing and should update shared task records as work progresses.
-
-### Codex
-Codex follows:
-- global `~/.codex/AGENTS.md`
-- project `AGENTS.md`
-
-Codex should use repository documents instead of assumptions and should update shared task records as work progresses.
-
-## Reading Order
-Before non-trivial work, AI tools should read in this order:
-1. `PROJECT-BRIEF.md`
-2. `PROJECT-START-KIT.md` if present
-3. `docs/architecture.md`
-4. `docs/ai-workflow.md`
-5. `docs/validation.md`
-6. `README.md`
-7. `tasks/todo.md`
-8. `tasks/lessons.md` if relevant
-
-## Shared Files and Their Purpose
-
-### `tasks/todo.md`
-The active task record.
-Use it for:
-- current goal
-- owner
-- status
-- plan
-- next step
-- blockers
-
-### `tasks/worklog.md`
-The historical record of meaningful work.
-Use it for:
-- what was done
-- who did it
-- what files were touched
-- what was verified
-- blockers or handoff notes
-
-### `tasks/lessons.md`
-The reusable lesson log.
-Use it for:
-- repeated mistakes
-- user corrections with lasting value
-- repo-specific gotchas
-- rules worth preserving
-
-### `docs/adr/`
-The durable decision record.
-Use ADRs for:
-- meaningful technical decisions
-- architecture choices
-- tradeoff-heavy decisions
-- decisions future contributors may question later
-
-Do not use ADRs for routine implementation notes.
-
-## Ownership Rules
-- Every active non-trivial task should have a clear owner in `tasks/todo.md`.
-- Owner should be one of:
-  - `claude`
-  - `codex`
-  - `human`
-- If ownership is unclear, the task is not ready for execution.
-- Do not silently take over work already being actively handled by another actor.
-
-## Ownership Precedence
-When ownership or control is unclear, resolve authority in this order:
-1. explicit human instruction
-2. the `Owner` field in `tasks/todo.md`
-3. supporting context from `tasks/worklog.md`
-
-`tasks/worklog.md` provides context, but it does not override explicit ownership.
-
-## Conflict Rules
-- If another actor is already working on the same task or same files, do not continue blindly.
-- Record the blocker or conflict in `tasks/todo.md`.
-- Append a short note to `tasks/worklog.md`.
-- Stop and wait for resolution if the conflict is material.
-- Human judgment resolves unresolved conflicts.
-
-## Update Triggers
-Update files based on what changed.
-
-### Update `docs/architecture.md` when:
-- system boundaries change
-- major flows change
-- core assumptions change
-- a new important subsystem is introduced
-
-### Update `tasks/todo.md` when:
-- the active goal changes
-- task ownership changes
-- plan changes
-- status changes
-- the next step changes
-- a blocker appears or is resolved
-
-### Update `tasks/worklog.md` when:
-- meaningful work is completed
-- a meaningful investigation happened
-- a handoff is needed
-- a blocker or conflict should be recorded
-- verification was performed
-
-### Update `tasks/lessons.md` when:
-- the same mistake appears again
-- a user correction has reusable value
-- a repo-specific gotcha should be preserved
-
-### Update `docs/adr/` when:
-- a durable technical decision is made
-- a tradeoff-heavy decision is accepted
-- future contributors may need to know why a path was chosen
+Granularity: one entry per meaningful unit of work — not per tiny edit.
+Small task = one entry; larger tasks = milestone entries. Append-only; never rewrite history except to fix an obvious factual error.
 
 ## ADR Threshold
 Create an ADR when at least two of the following are true:
-- the decision affects more than one subsystem or module
+- the decision affects more than one subsystem
 - there was a real alternative worth considering
-- a future contributor may ask "why was this chosen?"
-- the decision will outlive the current task
-- changing the decision later would be meaningfully costly
+- a future reader may ask "why was this chosen?"
+- the decision outlives the current task
+- changing it later would be costly
 
-Prefer worklog notes for routine implementation details.
+Routine implementation details belong in the worklog, not ADRs.
 
-## Worklog Format
-Each worklog entry should include:
-- timestamp
-- actor
-- task
-- files changed or inspected
-- summary
-- verification
+## Ownership and Conflict (short form)
+- Every active non-trivial task has an `Owner` in `tasks/todo.md` (`claude` / `codex` / `human`).
+- If another actor is actively working on the same task or files: stop, note the conflict in `tasks/todo.md`, and ask the human.
+- The human is the final authority on priorities and disputes.
 
-## Worklog Granularity
-Do not create a worklog entry for every tiny edit.
-
-A worklog entry is expected when:
-- a meaningful unit of work is completed
-- a meaningful investigation happened
-- a blocker or conflict appears
-- a handoff is needed
-- validation was performed
-- a task state materially changed
-
-In practice:
-- small tasks may need one entry
-- medium tasks may need one to three entries
-- larger tasks may need milestone-based entries
-
-## Handoff Expectations
-When handing work to another actor:
-- update `tasks/todo.md`
-- append to `tasks/worklog.md`
-- clearly state current status
-- state blockers or open questions
-- state what was verified
-- state what remains to be done
+## Subagents
+- Project rules (`CLAUDE.md`) auto-load for subagents too, and bash/file hooks fire on their tool calls.
+- The worklog Stop guard runs on the main agent, which owns task close-out.
+- Keep one responsibility per subagent.
 
 ## Skills Rule
-`skills/` is for reusable workflows.
+`skills/` holds reusable workflows. Create a skill when a process has repeated at least twice, or is clearly reusable and multi-step on first appearance. Do not create a skill for one-off tasks.
 
-A workflow should be considered a candidate for a skill when:
-- it has already repeated at least twice
-- or it is already clearly reusable, multi-step, and process-heavy on first appearance
+## Agent Runtime Note
+`.claude/agents/` (Claude) and `.codex/agents/` (Codex) are separate runtime layers with different formats. If an agent should exist for both tools, adapt it per tool intentionally — there is no automatic sync.
 
-Do not create a new skill for every one-off task.
-Create or request a skill when reuse is likely.
-
-## Agent Runtime Rule
-- `.claude/agents/` is the Claude runtime layer for project agents
-- `.codex/agents/` is the Codex runtime layer for project agents
-
-Claude and Codex do not use identical agent formats or behaviors.
-If an agent should exist for both tools, adapt it per tool intentionally.
-Do not assume automatic synchronization between the two runtime layers.
+## Growth Path
+When project-specific conventions accumulate (e.g. area-specific rules for auth or billing), put them in project-level `.claude/rules/*.md` with `paths:` frontmatter so they load only when matching files are touched. Do not grow `CLAUDE.md` indefinitely, and note that `@import` loads files in full — it organizes context, it does not save it.
 
 ## Validation
-Completion standards are defined in `docs/validation.md`.
-A task is not done until validation is performed or verification gaps are explicitly stated.
+Completion standards live in `docs/validation.md`. A task is not done until validation is performed or the gaps are explicitly stated.
 
 ## General Rule
-Prefer repository truth over hidden context, memory, or guesswork.
-If repository documents and assumptions disagree, update the repository or explicitly flag the inconsistency.
+Prefer repository truth over memory or guesswork. If documents and reality disagree, update the document or flag the inconsistency.

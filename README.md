@@ -18,15 +18,18 @@ This file focuses on what the project is technically and how to work with the re
 
 ## Structure
 - `PROJECT-BRIEF.md` — project intent, motivation, roadmap (primary source)
-- `CLAUDE.md` — project-specific rules for Claude
-- `AGENTS.md` — project-specific rules for Codex
-- `docs/architecture.md` — system structure and major flows
-- `docs/ai-workflow.md` — how AI tools coordinate in this repo
+- `CLAUDE.md` — project-specific rules for Claude (thin; mirrored with `AGENTS.md`)
+- `AGENTS.md` — project-specific rules for Codex (thin; mirrored with `CLAUDE.md`)
+- `docs/architecture.md` — system structure, major flows, and the folder map
+- `docs/ai-workflow.md` — the canonical AI process document
 - `docs/validation.md` — completion and verification standards
-- `tasks/todo.md` — active task plan and ownership
-- `tasks/worklog.md` — chronological work log
+- `plans/` — durable implementation plans (plan-mode output lands here automatically)
+- `tasks/todo.md` — the single active task
+- `tasks/backlog.md` — one-line list of upcoming work
+- `tasks/worklog.md` — chronological work log (guarded by a Stop hook)
 - `tasks/lessons.md` — reusable lessons and repeated failure patterns
 - `skills/` — reusable workflows
+- `.claude/settings.json` — project Claude Code settings (`plansDirectory`, worklog guard hook)
 - `global-templates/` — reference copies of the operator's global Claude/Codex rules (informational only, never auto-installed — see `global-templates/README.md`)
 
 ## Quick Start

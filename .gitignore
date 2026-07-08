@@ -27,3 +27,7 @@ __pycache__/
 
 # Logs
 *.log
+
+# Claude Code — personal/machine-specific (never commit)
+.claude/settings.local.json
+.claude/hookify.*.local.md

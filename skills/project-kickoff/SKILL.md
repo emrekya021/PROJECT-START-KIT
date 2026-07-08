@@ -172,6 +172,7 @@ What to fill:
 - Key Entities / Data Model (if known, otherwise mark as TBD)
 - Architectural Constraints (derived from constraints in the brief)
 - Boundaries and Responsibilities (keep the existing defaults, add project-specific ones)
+- **Folder Map (required):** a concrete directory layout for the chosen stack — where source code, tests, configs, and assets live (e.g. `src/`, `tests/`, `public/`). The AI's folder discipline rule (CLAUDE.md/AGENTS.md) depends on this map existing. Keep it realistic for the stack; expand it as the project grows.
 - Risks and Open Questions (technical subset of risks from the brief)
 
 What NOT to put here:
@@ -252,17 +253,22 @@ Fill the existing template:
 - **Status:** `not started`
 - **Priority:** `high`
 - **Context:** Reference Phase 1 of `PROJECT-BRIEF.md`
+- **Active plan:** "none yet — create a plan in `plans/` when work starts if the task is Level 2-3"
 - **Plan:** Break Phase 1's first deliverable into 3-5 concrete steps
 - **Next Step:** The very first action to take
 
-### File 8: `tasks/worklog.md`
+### File 8: `tasks/backlog.md`
+
+Seed the backlog from the roadmap: convert Phase 1's remaining deliverables (beyond the first task) and Phase 2-3 headline items into one-line backlog entries, ordered by roadmap sequence. Keep each line short — the backlog is a queue, not a spec.
+
+### File 9: `tasks/worklog.md`
 
 Append a kickoff entry:
 ```
 ## [DATE] — Project Kickoff
 - **Actor:** [claude / codex — whoever ran this skill]
 - **Task:** Project instantiation
-- **Files changed:** PROJECT-BRIEF.md, docs/architecture.md, README.md, CLAUDE.md, AGENTS.md, tasks/todo.md
+- **Files changed:** PROJECT-BRIEF.md, docs/architecture.md, README.md, CLAUDE.md, AGENTS.md, tasks/todo.md, tasks/backlog.md
 - **Summary:** Instantiated the Project Start Kit with [project name]. Completed interview, created project brief, derived architecture and README, opened first task.
 - **Verification:** All placeholder content in core files replaced with real project content. Instantiation trigger conditions met.
 ```
@@ -277,6 +283,7 @@ When all files are written, present a brief summary to the user:
 > - `README.md` — proje kimlik kartı
 > - `CLAUDE.md` / `AGENTS.md` — AI bağlamı
 > - `tasks/todo.md` — ilk görev açıldı
+> - `tasks/backlog.md` — roadmap'ten sıradaki işler
 > - `tasks/worklog.md` — kickoff kaydı
 >
 > İlk görev: [first task summary]. Başlamak ister misin?"

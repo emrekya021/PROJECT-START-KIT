@@ -17,6 +17,16 @@ Add new entries to the top or bottom consistently.
 
 ---
 
+### [2026-07-08 17:45]
+- Actor: claude
+- Task: Project Start Kit V2 restructure (plan: `plans/001-project-start-kit-v2.md`)
+- Files: `.claude/settings.json` (new), `.claude/hooks/worklog-guard.sh` (new), `plans/README.md` (new), `plans/001-project-start-kit-v2.md` (new), `tasks/backlog.md` (new), `docs/adr/000-template.md` (new), `docs/ai-workflow.md` (rewrite), `CLAUDE.md` (rewrite), `AGENTS.md` (rewrite), `tasks/todo.md`, `docs/architecture.md`, `PROJECT-START-KIT.md`, `README.md`, `skills/project-kickoff/SKILL.md`, `tasks/lessons.md`
+- Summary: Restructured the kit for single-AI cross-session memory. Replaced the mandatory 7-doc reading order with tiered/lazy reading; made `docs/ai-workflow.md` the canonical process doc (241→90 lines, multi-AI ceremony removed, close-out checklist added); slimmed CLAUDE.md/AGENTS.md to mirrored 42-line files with `@tasks/todo.md` import (Claude) / explicit read rule (Codex) and a folder-discipline hard rule; added `plansDirectory: ./plans` so plan-mode plans persist in-repo; added `tasks/backlog.md`; added a Stop hook that warns when repo files changed but the worklog wasn't updated (with `stop_hook_active` loop protection); added ADR template; added a required Folder Map section to architecture.md and a folder-map + backlog-seeding step to the kickoff skill.
+- Verification: settings.json valid JSON; hook tested in 4 scenarios (dirty-no-worklog → warns; stop_hook_active → silent; worklog touched → silent; clean repo → silent, tested in a scratchpad repo); `wc -l` CLAUDE.md=42, AGENTS.md=42, ai-workflow.md=90; CLAUDE↔AGENTS diff shows only 5 intentional differences; stale-reference grep pending as final step before commit.
+- Blockers / Next: Human approval for commit, then backlog item: push as "Project Start Kit V2" to GitHub.
+
+---
+
 ### [2026-07-08 16:30]
 - Actor: claude
 - Task: remove unused `agents/` and `mcp/` directories

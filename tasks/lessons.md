@@ -33,6 +33,11 @@ Add a lesson when:
 - Problem: Placeholder text may be mistaken for actual product decisions
 - Rule: Treat placeholders as scaffolding until replaced by real project details
 
+### Never use git stash to test against a clean tree mid-task
+- Context: Testing scripts/hooks that behave differently on a clean vs dirty repo
+- Problem: `git stash -u` removed all in-progress work; the test command failed mid-chain, so `git stash pop` never ran and uncommitted work was temporarily lost
+- Rule: Test clean-repo behavior in a throwaway repo (scratchpad), never by stashing real in-progress work
+
 ### Record durable technical decisions separately
 - Context: When a meaningful architectural or tradeoff-heavy decision is made
 - Problem: Important decisions become hard to find when buried in task notes
