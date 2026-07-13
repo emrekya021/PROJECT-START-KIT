@@ -1,4 +1,4 @@
-# Project Start Kit
+# Project Start Kit V2
 
 This repository is a reusable starter kit for AI-assisted software projects.
 
